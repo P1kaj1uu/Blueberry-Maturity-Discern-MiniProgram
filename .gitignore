@@ -1,0 +1,43 @@
+# Python 环境、缓存与测试产物
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Node 依赖与构建产物；保留 package-lock.json
+node_modules/
+coverage/
+dist/
+
+# 本机运行缓存、验证截图与生成的完整 ONNX
+.runtime/
+artifacts/
+/model/best.onnx
+
+# 微信开发者工具的个人配置
+/project.private.config.json
+
+# 本地环境变量；允许提交不含密钥的配置示例
+.env
+.env.*
+!.env.example
+!.env.sample
+
+# 日志、编辑器临时文件与系统文件
+*.log
+*.swp
+*.swo
+*~
+.idea/
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini
+
+# model/best.pt 和 miniprogram/models/ 为项目模型资源，保留在版本控制中。

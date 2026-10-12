@@ -1,0 +1,14 @@
+<view class="page">
+  <view class="page-title serif">每一次观察，都算数。</view>
+  <view class="journal-sub">把枝头的变化，留在这本小小的手记里。</view>
+  <block wx:if="{{records.length > 0}}">
+    <view class="journal-stats"><view><text class="stat-num">{{records.length}}</text><text>次观察</text></view><view><text class="stat-num">{{total}}</text><text>颗已检测果实</text></view><view><text class="stat-num">{{ratio}}<text class="stat-percent">%</text></text><text>累计成熟占比</text></view></view>
+    <view class="section-head"><text class="section-title">观察手记</text><button class="text-button" bindtap="clearRecords">清空记录</button></view>
+    <view class="journal-card" wx:for="{{records}}" wx:key="id">
+      <button class="record-main" data-id="{{item.id}}" bindtap="openRecord" hover-class="press"><image class="record-photo" src="{{item.imagePath}}" mode="aspectFill" /><view class="record-content"><view class="record-date">{{item.dateLabel}}</view><view class="record-title">{{item.result.summary.total}} 颗蓝莓的成熟时刻</view><view class="record-counts"><text><text class="dot"></text>成熟 {{item.result.summary.mature}}</text><text><text class="dot unripe"></text>未成熟 {{item.result.summary.immature}}</text></view></view><image class="chevron" src="/assets/icons/chevron.svg" /></button>
+      <view class="record-bottom"><view>成熟占比 <text class="record-ratio">{{item.result.summary.mature_ratio}}%</text></view><button class="delete-button" data-id="{{item.id}}" bindtap="deleteRecord">删除</button></view>
+    </view>
+    <view class="storage-note"><view>记录仅保存在当前设备，最多保留最近 30 次。</view><view>累计统计按照片计算，同一果实可能被重复拍摄。</view></view>
+  </block>
+  <view wx:else class="journal-empty"><image src="/assets/icons/leaf.svg" class="journal-leaf" /><view class="serif empty-head">第一篇手记，等你开启。</view><view class="empty-copy"><view>拍下眼前的蓝莓，</view><view>这里会为你留住它们的成熟时刻。</view></view><button class="primary" bindtap="startObservation" hover-class="press">开始第一次识别</button><view class="storage-note">照片和记录仅保存在当前设备</view></view>
+</view>

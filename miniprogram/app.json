@@ -1,0 +1,122 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/records/records",
+    "pages/guide/guide"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "蓝莓成熟度识别",
+    "navigationBarBackgroundColor": "#f7f7f2",
+    "backgroundColor": "#f7f7f2"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8a9287",
+    "selectedColor": "#244e3e",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "识别"
+      },
+      {
+        "pagePath": "pages/records/records",
+        "text": "记录"
+      },
+      {
+        "pagePath": "pages/guide/guide",
+        "text": "拍摄指南"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "subPackages": [
+    {
+      "name": "berry_model_01",
+      "root": "models/berry_model_01",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_02",
+      "root": "models/berry_model_02",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_03",
+      "root": "models/berry_model_03",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_04",
+      "root": "models/berry_model_04",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_05",
+      "root": "models/berry_model_05",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_06",
+      "root": "models/berry_model_06",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_07",
+      "root": "models/berry_model_07",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_08",
+      "root": "models/berry_model_08",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_09",
+      "root": "models/berry_model_09",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_10",
+      "root": "models/berry_model_10",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_11",
+      "root": "models/berry_model_11",
+      "pages": [
+        "placeholder"
+      ]
+    },
+    {
+      "name": "berry_model_12",
+      "root": "models/berry_model_12",
+      "pages": [
+        "placeholder"
+      ]
+    }
+  ]
+}

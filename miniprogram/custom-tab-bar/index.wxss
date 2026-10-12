@@ -1,0 +1,8 @@
+.tab-bar { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; background: #fafbf7; display: flex; padding: 16rpx 32rpx calc(14rpx + env(safe-area-inset-bottom)); border-top: 1rpx solid #e5e8de; }
+.tab { position: relative; flex: 1; display: flex; flex-direction: column; align-items: center; gap: 8rpx; padding: 8rpx 0; margin: 0; background: transparent; border: 0; border-radius: 12rpx; color: #8a9287; font-size: 21rpx; line-height: 1.4; }
+.tab::after { border: none; }
+.tab-icon { width: 40rpx; height: 40rpx; opacity: .45; }
+.active { color: #244e3e; font-weight: 600; }
+.active .tab-icon { opacity: 1; }
+.active-mark { position: absolute; top: -16rpx; width: 36rpx; height: 4rpx; border-radius: 2rpx; background: #244e3e; }
+.tab-press { background: #ecf0e6; }

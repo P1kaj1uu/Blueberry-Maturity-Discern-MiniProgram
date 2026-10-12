@@ -1,0 +1,125 @@
+.page-title {
+  font-size: 48rpx;
+  margin-top: 22rpx;
+}
+.journal-sub {
+  color: #7c8874;
+  font-size: 24rpx;
+  line-height: 1.8;
+}
+.journal-stats {
+  display: flex;
+  background: #eaf0e2;
+  padding: 32rpx 20rpx;
+  border-radius: 18rpx;
+  margin-top: 36rpx;
+}
+.journal-stats > view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  gap: 14rpx;
+  border-right: 1rpx solid #d0dcc4;
+  font-size: 20rpx;
+  color: #7b8b6d;
+}
+.journal-stats > view:last-child {
+  border: none;
+}
+.journal-stats .stat-num {
+  color: #244e3e;
+  font-size: 44rpx;
+  font-family: Georgia, serif;
+}
+.stat-percent {
+  font-size: 23rpx;
+}
+.journal-card {
+  background: #fff;
+  border: 1rpx solid #e5e9dd;
+  border-radius: 18rpx;
+  margin-bottom: 22rpx;
+  padding: 24rpx;
+}
+.record-main {
+  display: flex;
+  align-items: center;
+  text-align: left;
+  width: 100%;
+  gap: 24rpx;
+}
+.record-photo {
+  width: 134rpx;
+  height: 144rpx;
+  border-radius: 10rpx;
+  flex-shrink: 0;
+}
+.record-content {
+  flex: 1;
+}
+.record-date {
+  color: #8e9982;
+  font-size: 21rpx;
+}
+.record-title {
+  font-size: 26rpx;
+  font-weight: 500;
+  margin-top: 14rpx;
+}
+.record-counts {
+  display: flex;
+  gap: 22rpx;
+  font-size: 20rpx;
+  color: #728367;
+  margin-top: 18rpx;
+}
+.record-counts .dot {
+  width: 10rpx;
+  height: 10rpx;
+  margin-right: 7rpx;
+}
+.record-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 22rpx;
+  color: #8b967f;
+  border-top: 1rpx solid #eef0e8;
+  margin-top: 24rpx;
+  padding-top: 18rpx;
+}
+.record-ratio {
+  color: #244e3e;
+  font-size: 26rpx;
+  margin-left: 10rpx;
+  font-weight: 600;
+}
+.delete-button {
+  font-size: 22rpx;
+  color: #9c9988;
+  padding: 12rpx 4rpx 12rpx 24rpx;
+}
+.storage-note {
+  color: #99a18e;
+  font-size: 21rpx;
+  line-height: 1.8;
+  text-align: center;
+  margin-top: 32rpx;
+}
+.journal-empty {
+  padding: 90rpx 32rpx 0;
+  text-align: center;
+}
+.journal-leaf {
+  width: 100rpx;
+  height: 100rpx;
+  opacity: 0.65;
+}
+.empty-head {
+  font-size: 37rpx;
+  margin: 34rpx 0 22rpx;
+}
+.journal-empty .primary {
+  margin-top: 48rpx;
+}

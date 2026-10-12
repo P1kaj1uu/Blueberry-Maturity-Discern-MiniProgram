@@ -1,0 +1,56 @@
+<view class="page">
+  <block wx:if="{{stage === 'home'}}">
+    <view class="intro">
+      <view class="page-title serif"><view>今天的蓝莓，</view><view>成熟了吗？</view></view>
+      <view class="intro-copy">拍一张，认出每颗果实的成熟时刻。</view>
+    </view>
+    <view class="hero">
+      <image class="hero-photo" src="../../assets/blueberries.jpg" mode="aspectFill" />
+      <view class="hero-shade"></view>
+      <view class="hero-top"><view class="hero-tag"><view class="tiny-dot"></view>蓝莓观察手记</view><text class="hero-number">01 / BLUEBERRY</text></view>
+      <view class="hero-bottom"><view><text class="hero-caption serif">好收成，从看见开始。</text><view class="hero-sub">多果检测 · 成熟判断 · 数量统计</view></view><button class="sample-button" bindtap="useSample" hover-class="press">试试示例<text class="sample-arrow">↗</text></button></view>
+    </view>
+    <view class="action-row">
+      <button class="primary camera-button" bindtap="chooseCamera" hover-class="press"><image class="icon" src="/assets/icons/camera.svg" />拍照识别</button>
+      <button class="secondary album-button" bindtap="chooseAlbum" hover-class="press"><image class="icon" src="/assets/icons/photo.svg" />从相册选择</button>
+    </view>
+    <view class="upload-note">照片在本机识别 · 单张照片最多 15MB</view>
+    <view class="tip-strip" bindtap="openGuide"><view class="tip-number">小贴士</view><text>光线自然、果实清晰，识别更准确。</text><image class="chevron" src="/assets/icons/chevron.svg" /></view>
+    <view class="section-head"><text class="section-title">最近一次识别</text><button class="text-button" bindtap="openRecords">全部记录<image class="chevron" src="/assets/icons/chevron.svg" /></button></view>
+    <button wx:if="{{recent}}" class="recent-card" bindtap="openRecent" hover-class="press">
+      <image class="recent-photo" src="{{recent.imagePath}}" mode="aspectFill" />
+      <view class="recent-info"><view class="recent-title">检测到 {{recent.result.summary.total}} 颗蓝莓</view><view class="recent-date">{{recent.dateLabel}}</view><view class="recent-count"><text><text class="dot"></text>成熟 {{recent.result.summary.mature}}</text><text><text class="dot unripe"></text>未成熟 {{recent.result.summary.immature}}</text></view></view>
+      <view class="recent-ratio"><text>{{recent.result.summary.mature_ratio}}<text class="percent">%</text></text><view>成熟占比</view></view>
+    </button>
+    <view wx:else class="first-record"><image src="/assets/icons/record.svg" class="icon" /><view><view>留住每一次成熟的观察</view><text>完成首次识别后，记录会出现在这里。</text></view></view>
+    <view class="footer-note">一颗一颗，读懂自然的节奏</view>
+  </block>
+
+  <block wx:elif="{{stage === 'loading' || stage === 'error'}}">
+    <view class="page-title serif">{{stage === 'loading' ? '让我们仔细看看。' : '这次没能看清。'}}</view>
+    <view class="muted state-copy">{{stage === 'loading' ? '稍等片刻，正在辨认照片中的每一颗蓝莓。' : error}}</view>
+    <view class="loading-photo-wrap"><image src="{{imagePath}}" mode="aspectFit" class="loading-photo" /><view wx:if="{{stage === 'loading'}}" class="loading-badge"><view class="loading-dot"></view>{{loadingText}}</view></view>
+    <view wx:if="{{stage === 'loading'}}" class="loading-status"><view class="progress-track"><view class="progress-fill" style="width:{{progress}}%;"></view></view><text>{{loadingText}}</text></view>
+    <button wx:if="{{stage === 'error'}}" class="primary" bindtap="retry" hover-class="press">重新识别</button>
+    <button class="secondary state-back" bindtap="reset" hover-class="press">{{stage === 'loading' ? '取消识别' : '返回首页'}}</button>
+  </block>
+
+  <block wx:elif="{{stage === 'result'}}">
+    <view class="result-heading"><view><view class="page-title serif">这一张的成熟时刻</view></view><button class="close-button" bindtap="reset" aria-label="返回首页" hover-class="press"><image class="icon" src="/assets/icons/close.svg" /></button></view>
+    <view class="result-sub">{{result.summary.total > 0 ? '共发现 ' + result.summary.total + ' 颗蓝莓，已逐颗标出。' : '照片中暂未检测到蓝莓，换个角度试试。'}}</view>
+    <view class="photo-tools"><view class="legend"><text><text class="dot"></text>成熟</text><text><text class="dot unripe"></text>未成熟</text></view><button bindtap="toggleBoxes" class="text-button">{{showBoxes ? '查看原图' : '显示标注'}}</button></view>
+    <view class="detection-photo" style="height:{{imageHeight}}rpx;" bindtap="previewImage">
+      <image class="result-photo" src="{{imagePath}}" mode="scaleToFill" />
+      <block wx:if="{{showBoxes}}"><view wx:for="{{boxes}}" wx:key="id" class="berry-box {{item.status}} {{selectedId === item.id ? 'selected' : ''}}" style="{{item.style}}" data-id="{{item.id}}" catchtap="selectBerry"><text class="berry-label">{{item.id}}<block wx:if="{{selectedId === item.id}}"> · {{item.label}} {{item.confidenceLabel}}%</block></text></view></block>
+    </view>
+    <view class="photo-hint">点击果实框查看成熟度与置信度 · 点击照片放大</view>
+    <view class="summary-card"><view class="summary-top"><view><text class="eyebrow">成熟果占比</text><view class="ratio-number">{{result.summary.mature_ratio}}<text>%</text></view></view><view class="summary-aside"><text class="summary-leaf serif">{{result.summary.total > 0 ? '每颗，都有答案。' : '换一张，再看看。'}}</text><view>成熟数量 ÷ 检测总数</view></view></view><view class="ratio-track"><view class="ratio-fill" style="width:{{result.summary.mature_ratio}}%;"></view></view><view class="counts"><view><text class="count-number">{{result.summary.total}}</text><text class="count-label">检测总数 / 颗</text></view><view><text class="count-number mature-text">{{result.summary.mature}}</text><text class="count-label"><text class="dot"></text>成熟 / 颗</text></view><view><text class="count-number immature-text">{{result.summary.immature}}</text><text class="count-label"><text class="dot unripe"></text>未成熟 / 颗</text></view></view></view>
+    <view wx:if="{{result.summary.total > 0}}" class="filter-row"><button class="filter {{filter === 'all' ? 'chosen' : ''}}" data-filter="all" bindtap="setFilter">全部 {{result.summary.total}}</button><button class="filter {{filter === 'mature' ? 'chosen' : ''}}" data-filter="mature" bindtap="setFilter">成熟 {{result.summary.mature}}</button><button class="filter {{filter === 'immature' ? 'chosen' : ''}}" data-filter="immature" bindtap="setFilter">未成熟 {{result.summary.immature}}</button></view>
+    <view wx:if="{{result.summary.total > 0}}" class="berry-list"><view wx:for="{{boxes}}" wx:key="id" class="berry-row {{selectedId === item.id ? 'row-selected' : ''}}" data-id="{{item.id}}" bindtap="selectBerry"><text class="berry-index">{{item.id < 10 ? '0' + item.id : item.id}}</text><text class="berry-state"><text class="dot {{item.status === 'immature' ? 'unripe' : ''}}"></text>{{item.label}}</text><text class="confidence">置信度 {{item.confidenceLabel}}%</text></view><view wx:if="{{boxes.length === 0}}" class="no-filter-result">这张照片中没有{{filter === 'mature' ? '成熟' : '未成熟'}}蓝莓</view></view>
+    <view class="result-actions"><button class="primary" bindtap="chooseCamera" hover-class="press"><image class="icon" src="/assets/icons/camera.svg" />再拍一张</button><button class="secondary" bindtap="saveImage" disabled="{{saving}}" hover-class="press"><image class="icon" src="/assets/icons/download.svg" />{{saving ? '正在保存' : '保存标注图'}}</button></view>
+    <button class="text-button another-photo" bindtap="chooseAlbum">从相册识别另一张<image class="chevron" src="/assets/icons/chevron.svg" /></button>
+    <view class="result-note">统计仅针对本次检测到的果实。遮挡、模糊和光线可能影响识别，建议结合实物观察。</view>
+    <canvas type="2d" id="exportCanvas" class="export-canvas"></canvas>
+  </block>
+  <canvas type="2d" id="inferenceCanvas" class="export-canvas"></canvas>
+</view>

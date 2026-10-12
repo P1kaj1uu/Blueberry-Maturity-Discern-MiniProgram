@@ -1,0 +1,10 @@
+{
+  "name": "pinlan-blueberry",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node --test tests/miniprogram.test.js tests/local-inference.test.js",
+    "test:ui": "node tests/wechat-smoke.js"
+  },
+  "devDependencies": { "miniprogram-automator": "0.12.1" }
+}

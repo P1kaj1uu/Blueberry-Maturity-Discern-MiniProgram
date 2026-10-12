@@ -1,0 +1,5 @@
+ultralytics==8.4.116
+fastapi==0.143.0
+uvicorn==0.54.0
+python-multipart==0.0.32
+Pillow>=10.4,<13

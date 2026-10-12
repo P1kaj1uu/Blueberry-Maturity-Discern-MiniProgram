@@ -1,0 +1,7 @@
+<view class="tab-bar">
+  <button wx:for="{{tabs}}" wx:key="path" class="tab {{selected === index ? 'active' : ''}}" data-index="{{index}}" bindtap="switchTab" hover-class="tab-press" aria-label="{{item.label}}">
+    <image class="tab-icon" src="/assets/icons/{{item.icon}}.svg" />
+    <text>{{item.label}}</text>
+    <view class="active-mark" wx:if="{{selected === index}}"></view>
+  </button>
+</view>

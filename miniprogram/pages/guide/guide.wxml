@@ -1,0 +1,11 @@
+<view class="page">
+  <view class="page-title serif">拍得好，看得更清。</view>
+  <view class="guide-sub">几个小细节，让每一颗蓝莓都被看见。</view>
+  <view class="guide-photo"><image src="../../assets/blueberries.jpg" mode="aspectFill" /><view class="frame-corner tl"></view><view class="frame-corner tr"></view><view class="frame-corner bl"></view><view class="frame-corner br"></view><text>对焦果实，保持清晰</text></view>
+  <view class="guide-step"><text class="step-number serif">01</text><view><view class="step-title">借一点自然光</view><view class="step-copy">尽量在明亮、光线均匀的环境拍摄。避开逆光和强烈反光，让果实颜色自然呈现。</view></view></view>
+  <view class="guide-step"><text class="step-number serif">02</text><view><view class="step-title">靠近一些，也留点空间</view><view class="step-copy">让蓝莓占据照片的主要区域，并保持果实完整。一张照片可以包含多颗蓝莓，无需逐颗拍摄。</view></view></view>
+  <view class="guide-step"><text class="step-number serif">03</text><view><view class="step-title">对准果实，稳稳地拍</view><view class="step-copy">轻点屏幕对焦后再拍摄。尽量避开叶片遮挡和过度重叠，模糊的照片可以重新拍一张。</view></view></view>
+  <view class="reading-note"><view class="section-title serif">怎样读懂识别结果？</view><view class="reading-row"><text class="dot"></text><view><text class="reading-title">成熟</text><text class="reading-copy">蓝色框标出模型判断为成熟的果实。</text></view></view><view class="reading-row"><text class="dot unripe"></text><view><text class="reading-title">未成熟</text><text class="reading-copy">麦黄色框标出模型判断为未成熟的果实。</text></view></view><view class="guide-divider"></view><view class="formula">成熟果占比 = 成熟数量 ÷ 检测总数 × 100%</view><view class="formula-note">置信度表示模型对本次判断的把握程度，不是成熟程度。未检测到果实时，成熟占比显示为 0%。</view></view>
+  <button class="primary" bindtap="startObservation" hover-class="press">去看看今天的蓝莓</button>
+  <view class="footer-note">照片识别仅作观察参考，请结合实物判断</view>
+</view>

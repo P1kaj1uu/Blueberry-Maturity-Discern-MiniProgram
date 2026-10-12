@@ -1,0 +1,24 @@
+# 文本统一使用 LF，二进制文件保持原始字节。
+* text=auto eol=lf
+
+# GitHub Linguist：微信模板、样式与脚本对应的语言。
+*.wxml linguist-language=HTML
+*.wxss linguist-language=CSS
+*.wxs linguist-language=JavaScript
+*.js linguist-language=JavaScript
+*.py linguist-language=Python
+
+# 自动生成的 base64 模型分包不计入语言统计，也不展开代码差异。
+miniprogram/models/** linguist-generated=true linguist-detectable=false -diff
+miniprogram/utils/model-manifest.js linguist-generated=true
+package-lock.json linguist-generated=true
+
+# 模型与图片禁止文本换行转换。
+*.pt binary
+*.onnx binary
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.gif binary
+*.ico binary
